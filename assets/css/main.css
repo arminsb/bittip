@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'yekan-bakh';
+    src: url('../fonts/yekan-bakh-regular/YekanBakh-Regular.ttf');
+    src: url('@/asstes/fonts/YekanBakh-Regular/YekanBakh-Regular.woff');
+    src: url('@/asstes/fonts/YekanBakh-Regular/YekanBakh-Regular.woff2');
+}
+
+@font-face {
+    font-family: 'yekan-bakh-medium';
+    src: url('@/asstes/fonts/YekanBakh-Medium/YekanBakh-Medium.ttf');
+    src: url('@/asstes/fonts/YekanBakh-Medium/YekanBakh-Medium.woff');
+    src: url('@/asstes/fonts/YekanBakh-Medium/YekanBakh-Medium.woff2');
+}
+
+@font-face {
+    font-family: 'yekan-bakh-bold';
+    src: url('@/asstes/fonts/YekanBakh-Bold/YekanBakh-Bold.ttf');
+    src: url('@/asstes/fonts/YekanBakh-Bold/YekanBakh-Bold.woff');
+    src: url('@/asstes/fonts/YekanBakh-Bold/YekanBakh-Bold.woff2');
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -15,4 +36,12 @@
 
 .my-input{
     @apply h-[42px] ;
+}
+
+.hover-shadow{
+    @apply transition-all duration-300 hover:shadow-xl
+}
+
+body {
+    font-family: 'yekan-bakh' !important;
 }

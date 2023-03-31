@@ -10,14 +10,19 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors:{
-        "authGradientFrom":"#6264A7",
-        "authGradientTo":"#5438DC",
-        "darkBg":"#191C2F",
-        "textWhite":"#FAFAFA",
-        "primaryBlue":"#5438DC",
-      }
+      colors: {
+        authGradientFrom: "#6264A7",
+        authGradientTo: "#5438DC",
+        darkBg: "#191C2F",
+        textWhite: "#FAFAFA",
+        primaryBlue: "#5438DC",
+      },
+      fontFamily: {
+        yekanBakh: ["yekan-bakh"],
+        yekanBakhMedium: ["yekan-bakh-medium"],
+        yekanBakhBold: ["yekan-bakh-bold"],
+      },
     },
   },
   plugins: [],
-}
+};
