@@ -4,7 +4,7 @@
       color ? 'text-' + color : '',
       bgColor ? 'bg-' + bgColor : '',
       font ? 'font-' + font : '',
-      'text-base font-bold w-[400px] h-[42px] rounded-lg',
+      'text-base font-bold w-[400px] h-[42px] rounded-lg hover-shadow',
     ]"
   >
     {{ text ? text : "ثبت" }}
