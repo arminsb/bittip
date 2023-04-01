@@ -15,7 +15,11 @@ module.exports = {
         authGradientTo: "#5438DC",
         darkBg: "#191C2F",
         textWhite: "#FAFAFA",
+        textMuted:"#757575",
+        textLightBlack:"#424242",
+        grayBorder:"#9e9e9e",
         primaryBlue: "#5438DC",
+        inputFocus:"#357DED",
       },
       fontFamily: {
         yekanBakh: ["yekan-bakh"],

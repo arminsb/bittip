@@ -29,19 +29,20 @@
     box-sizing: border-box;
 }
 
+body {
+    direction: rtl;
+    font-family: 'yekan-bakh';
+}
+
 
 .center-directive {
     @apply flex justify-center items-center;
 }
 
-.my-input{
-    @apply h-[42px] ;
+.my-input {
+    @apply w-[400px] h-[42px];
 }
 
-.hover-shadow{
-    @apply transition-all duration-300 hover:shadow-xl
-}
-
-body {
-    font-family: 'yekan-bakh' !important;
+.hover-shadow {
+    @apply transition-all duration-300 hover:shadow-xl;
 }
