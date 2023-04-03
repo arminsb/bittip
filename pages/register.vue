@@ -46,11 +46,18 @@
         <label for="base-input" class="block mb-2 font-yekanBakhBold"
           >رمزعبور</label
         >
-        <input
-          type="text"
-          id="base-input"
-          class="my-input rounded-lg border border-grayBorder text-grayBorder block w-full p-2.5 focus:outline-inputFocus"
-        />
+        <div class="my-input flex items-center">
+          <input
+            :type="!passwordIsShown ? 'password' : ''"
+            id="base-input"
+            class="my-input rounded-lg border-grayBorder border focus:outline-inputFocus text-grayBorder block w-full p-2.5"
+          />
+            <img class="absolute mr-[360px] center-direcive" @click="passwordIsShown = !passwordIsShown"
+              src="@/assets/images/icons/eye-slash.svg"
+              alt="eye-slash"
+            />
+            <!-- <img v-else src="@/assets/images/icons/eye.svg" alt="eye" /> -->
+        </div>
         <span class="absolute w-[400px]">
           <NuxtLink
             class="float-left font-yekanBakhBold text-sm text-textLightBlack underline"
@@ -63,13 +70,21 @@
         <label for="base-input" class="block mb-2 font-yekanBakhBold"
           >تکرار رمزعبور</label
         >
-        <input
-          type="text"
-          id="base-input"
-          class="my-input rounded-lg border border-grayBorder text-grayBorder block w-full p-2.5 focus:outline-inputFocus"
-        />
+
+        <div class="my-input flex items-center">
+          <input
+            :type="!repeatPasswordIsShown ? 'password' : ''"
+            id="base-input"
+            class="my-input rounded-lg border-grayBorder border focus:outline-inputFocus text-grayBorder block w-full p-2.5"
+          />
+            <img class="absolute mr-[360px] center-direcive" @click="repeatPasswordIsShown = !repeatPasswordIsShown"
+              src="@/assets/images/icons/eye-slash.svg"
+              alt="eye-slash"
+            />
+            <!-- <img v-else src="@/assets/images/icons/eye.svg" alt="eye" /> -->
+        </div>
       </div>
-<!-- success , danger input start-->
+      <!-- success , danger input start-->
       <!-- <div class="mb-6">
         <label
           for="success"
@@ -102,7 +117,7 @@
           <span class="font-medium">Oh, snapp!</span> Some error message.
         </p>
       </div> -->
-<!-- success , danger input end-->
+      <!-- success , danger input end-->
       <CommonSubmitButton
         class="mt-5"
         text="ثبت نام"
@@ -126,7 +141,16 @@
 </template>
 
 <script>
+import { ref } from "vue";
 definePageMeta({
   layout: "auth",
 });
+export default {
+  setup() {
+    const passwordIsShown = ref(false);
+    const repeatPasswordIsShown = ref(false);
+
+    return { passwordIsShown,repeatPasswordIsShown };
+  },
+};
 </script>
