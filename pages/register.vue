@@ -1,123 +1,171 @@
 <template>
-  <div class="center-directive w-full md:w-6/12 items-center">
+  <div
+    class="center-directive w-full min-h-screen md:w-6/12 items-center dark:bg-darkBg"
+  >
     <div class="center-directive flex-col py-10">
       <div class="text-right w-full font-yekanBakhBold mb-6">
-        <h1 class="text-[32px] text-textLightBlack">
+        <h1 class="text-[32px] text-textLightBlack dark:text-textWhite">
           ثبت نام در <span class="text-primaryBlue">کندو</span>
         </h1>
-        <p class="text-sm text-textMuted">
+        <p class="text-sm text-textMuted dark:text-grayBorder">
           به کندو خوش اومدی! اگر عضو کندو نشدی اول ثبت نام کن
         </p>
       </div>
       <div class="mb-5">
-        <label for="base-input" class="block mb-2 font-yekanBakhBold"
+        <label
+          for="base-input"
+          class="block mb-2 font-yekanBakhBold text-textLightBlack dark:text-textWhite dark:text-textWhite"
           >نام</label
         >
+
         <input
+          v-model="formData.name"
+          @change="v$.name.$touch"
           type="text"
           id="base-input"
-          class="my-input rounded-lg border border-grayBorder text-grayBorder block w-full p-2.5 focus:outline-inputFocus"
           placeholder="وارد کردن نام"
+          class="my-input rounded-lg border outline-none border-grayBorder text-textLightBlack placeholder:text-grayBorder block w-full p-2.5 focus:border-inputFocus"
+          :class="{
+            'border-inputDanger focus:border-inputDanger': v$.name.$error,
+            'border-inputSuccess ': !v$.name.$invalid,
+          }"
         />
+        <div
+          class="text-red-500"
+          v-for="error of v$.name.$errors"
+          :key="error.$uid"
+        >
+          <div class="error-msg">{{ error.$message }}</div>
+        </div>
       </div>
       <div class="mb-5">
-        <label for="base-input" class="block mb-2 font-yekanBakhBold"
+        <label
+          for="base-input"
+          class="block mb-2 font-yekanBakhBold text-textLightBlack dark:text-textWhite"
           >نام خانوادگی</label
         >
         <input
+          v-model="formData.family"
+          @change="v$.family.$touch"
           type="text"
           id="base-input"
-          class="my-input rounded-lg border border-grayBorder text-grayBorder block w-full p-2.5 focus:outline-inputFocus"
           placeholder="وارد کردن نام خانوادگی "
+          class="my-input rounded-lg outline-none border border-grayBorder text-textLightBlack placeholder:text-grayBorder block w-full p-2.5 focus:border-inputFocus"
+          :class="{
+            'border-inputDanger focus:border-inputDanger': v$.family.$error,
+            'border-inputSuccess ': !v$.family.$invalid,
+          }"
         />
+        <div
+          class="text-red-500"
+          v-for="error of v$.family.$errors"
+          :key="error.$uid"
+        >
+          <div class="error-msg">{{ error.$message }}</div>
+        </div>
       </div>
       <div class="mb-5">
-        <label for="base-input" class="block mb-2 font-yekanBakhBold"
+        <label
+          for="base-input"
+          class="block mb-2 font-yekanBakhBold text-textLightBlack dark:text-textWhite"
           >ایمیل</label
         >
         <input
-          type="text"
+          v-model="formData.email"
+          @change="v$.email.$touch"
+          type="email"
           id="base-input"
-          class="my-input rounded-lg border border-grayBorder text-grayBorder block w-full p-2.5 focus:outline-inputFocus"
           placeholder="وارد کردن ایمیل"
+          class="my-input rounded-lg outline-none border border-grayBorder text-textLightBlack placeholder:text-grayBorder block w-full p-2.5 focus:boder-inputFocus"
+          :class="{
+            'border-inputDanger focus:border-inputDanger': v$.email.$error,
+            'border-inputSuccess ': !v$.email.$invalid,
+          }"
         />
+        <div
+          class="text-red-500"
+          v-for="error of v$.email.$errors"
+          :key="error.$uid"
+        >
+          <div class="error-msg">{{ error.$message }}</div>
+        </div>
       </div>
       <div class="mb-5">
-        <label for="base-input" class="block mb-2 font-yekanBakhBold"
+        <label
+          for="base-input"
+          class="block mb-2 font-yekanBakhBold text-textLightBlack dark:text-textWhite"
           >رمزعبور</label
         >
         <div class="my-input flex items-center">
           <input
+            v-model="formData.password"
+            @change="v$.password.$touch"
             :type="!passwordIsShown ? 'password' : ''"
             id="base-input"
-            class="my-input rounded-lg border-grayBorder border focus:outline-inputFocus text-grayBorder block w-full p-2.5"
+            class="my-input rounded-lg outline-none border-grayBorder border focus:border-inputFocus text-textLightBlack block w-full p-2.5"
+            :class="{
+              'border-inputDanger focus:border-inputDanger': v$.password.$error,
+              'border-inputSuccess ': !v$.password.$invalid,
+            }"
           />
-            <img class="absolute mr-[360px] center-direcive" @click="passwordIsShown = !passwordIsShown"
-              src="@/assets/images/icons/eye-slash.svg"
-              alt="eye-slash"
-            />
-            <!-- <img v-else src="@/assets/images/icons/eye.svg" alt="eye" /> -->
+          <img
+            class="absolute mr-[360px] center-direcive"
+            @click="passwordIsShown = !passwordIsShown"
+            src="@/assets/images/icons/eye-slash.svg"
+            alt="eye-slash"
+          />
         </div>
         <span class="absolute w-[400px]">
           <NuxtLink
-            class="float-left font-yekanBakhBold text-sm text-textLightBlack underline"
+            class="float-left font-yekanBakhBold text-sm text-textLightBlack dark:text-textWhite underline"
             to="/forget-password"
             >رمز خود را فراموش کرده اید؟</NuxtLink
           >
         </span>
+        <div
+          class="text-red-500 pt-5"
+          v-for="error of v$.password.$errors"
+          :key="error.$uid"
+        >
+          <div class="error-msg">{{ error.$message }}</div>
+        </div>
       </div>
       <div class="mb-5">
-        <label for="base-input" class="block mb-2 font-yekanBakhBold"
+        <label
+          for="base-input"
+          class="block mb-2 font-yekanBakhBold text-textLightBlack dark:text-textWhite"
           >تکرار رمزعبور</label
         >
 
         <div class="my-input flex items-center">
           <input
-            :type="!repeatPasswordIsShown ? 'password' : ''"
+            v-model="formData.confirmPassword"
+            @change="v$.confirmPassword.$touch"
+            :type="!confirmPasswordIsShown ? 'password' : ''"
             id="base-input"
-            class="my-input rounded-lg border-grayBorder border focus:outline-inputFocus text-grayBorder block w-full p-2.5"
+            class="my-input rounded-lg outline-none border-grayBorder border text-textLightBlack focus:border-inputFocus block w-full p-2.5"
+            :class="{
+              'border-inputDanger focus:border-inputDanger':
+                v$.confirmPassword.$error,
+              'border-inputSuccess ': !v$.confirmPassword.$invalid,
+            }"
           />
-            <img class="absolute mr-[360px] center-direcive" @click="repeatPasswordIsShown = !repeatPasswordIsShown"
-              src="@/assets/images/icons/eye-slash.svg"
-              alt="eye-slash"
-            />
-            <!-- <img v-else src="@/assets/images/icons/eye.svg" alt="eye" /> -->
+          <img
+            class="absolute mr-[360px] center-direcive"
+            @click="confirmPasswordIsShown = !confirmPasswordIsShown"
+            src="@/assets/images/icons/eye-slash.svg"
+            alt="eye-slash"
+          />
+        </div>
+        <div
+          class="input-errors text-red-500"
+          v-for="error of v$.confirmPassword.$errors"
+          :key="error.$uid"
+        >
+          <div class="error-msg">{{ error.$message }}</div>
         </div>
       </div>
-      <!-- success , danger input start-->
-      <!-- <div class="mb-6">
-        <label
-          for="success"
-          class="block mb-2 text-sm font-medium text-green-700 dark:text-green-500"
-          >Your name</label
-        >
-        <input
-          type="text"
-          id="success"
-          class="my-input bg-green-50 border border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-green-500"
-          placeholder="Success input"
-        />
-        <p class="mt-2 text-sm text-green-600 dark:text-green-500">
-          <span class="font-medium">Well done!</span> Some success message.
-        </p>
-      </div> -->
-      <!-- <div>
-        <label
-          for="error"
-          class="block mb-2 text-sm font-medium text-red-700 dark:text-red-500"
-          >Your name</label
-        >
-        <input
-          type="text"
-          id="error"
-          class="my-input bg-red-50 border border-red-500 text-red-900 placeholder-red-700 text-sm rounded-lg focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 block w-full p-2.5 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500"
-          placeholder="Error input"
-        />
-        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
-          <span class="font-medium">Oh, snapp!</span> Some error message.
-        </p>
-      </div> -->
-      <!-- success , danger input end-->
+
       <CommonSubmitButton
         class="mt-5"
         text="ثبت نام"
@@ -132,7 +180,9 @@
 
       <div class="font-yekanBakhBold text-xs mt-8 flex">
         <p class="text-textMuted">قبلا عضو شده اید؟</p>
-        <NuxtLink to="/login" class="text-textLightBlack underline"
+        <NuxtLink
+          to="/login"
+          class="text-textLightBlack dark:text-textWhite underline"
           >صفحه ورود</NuxtLink
         >
       </div>
@@ -141,16 +191,81 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useVuelidate } from "@vuelidate/core";
+import {
+  required,
+  email,
+  minLength,
+  sameAs,
+  helpers,
+} from "@vuelidate/validators";
+
 definePageMeta({
   layout: "auth",
 });
 export default {
   setup() {
-    const passwordIsShown = ref(false);
-    const repeatPasswordIsShown = ref(false);
+    const formData = reactive({
+      name: "",
+      family: "",
+      email: "",
+      password: "",
+      confirmPassword: null,
+    });
 
-    return { passwordIsShown,repeatPasswordIsShown };
+    const rules = computed(() => {
+      return {
+        name: {
+          required: helpers.withMessage(
+            "لورم ایپسوم متن ساختگی با تولید سادگی",
+            required
+          ),
+        },
+        family: {
+          required: helpers.withMessage(
+            "لورم ایپسوم متن ساختگی با تولید سادگی",
+            required
+          ),
+        },
+        email: {
+          required: helpers.withMessage(
+            "لورم ایپسوم متن ساختگی با تولید سادگی",
+            required
+          ),
+          email: helpers.withMessage(
+            "لورم ایپسوم متن ساختگی با تولید سادگی",
+            email
+          ),
+        },
+        password: {
+          required: helpers.withMessage(
+            "لورم ایپسوم متن ساختگی با تولید سادگی",
+            required
+          ),
+          minLength: helpers.withMessage(
+            "لورم ایپسوم متن ساختگی با تولید سادگی",
+            minLength(6)
+          ),
+        },
+        confirmPassword: {
+          required: helpers.withMessage(
+            "لورم ایپسوم متن ساختگی با تولید سادگی",
+            required
+          ),
+          sameAs: helpers.withMessage(
+            "لورم ایپسوم متن ساختگی با تولید سادگی",
+            sameAs(formData.password)
+          ),
+        },
+      };
+    });
+
+    const v$ = useVuelidate(rules, formData);
+    const passwordIsShown = ref(false);
+    const confirmPasswordIsShown = ref(false);
+
+    return { formData, v$, passwordIsShown, confirmPasswordIsShown };
   },
 };
 </script>

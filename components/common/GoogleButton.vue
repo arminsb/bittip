@@ -1,6 +1,6 @@
 <template>
   <button
-    class="center-directive border border-grayBorder rounded-lg font-yekanBakhBold text-textLightBlack w-[400px] h-[42px] hover-shadow"
+    class="center-directive border border-grayBorder rounded-lg font-yekanBakhBold text-textLightBlack dark:text-textWhite w-[400px] h-[42px] hover-shadow"
   >
     <img
       class="w-6 pl-2"

@@ -20,6 +20,8 @@ module.exports = {
         grayBorder:"#9e9e9e",
         primaryBlue: "#5438DC",
         inputFocus:"#357DED",
+        inputDanger:"#D74654",
+        inputSuccess:"#20A740",
       },
       fontFamily: {
         yekanBakh: ["yekan-bakh"],
