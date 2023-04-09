@@ -42,4 +42,4 @@ npm run preview
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 
 ## Validation Library
-Look at the [Vee-Validate documentation](https://vee-validate.logaretm.com/v4/) to learn more.
+Look at the [Vuelidate](https://github.com/vuelidate/vuelidate) to learn more.
