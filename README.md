@@ -1,3 +1,5 @@
+# Bit-Tip
+
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
@@ -42,4 +44,4 @@ npm run preview
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 
 ## Validation Library
-Look at the [Vee-Validate documentation](https://vee-validate.logaretm.com/v4/) to learn more.
+Look at the [Vuelidate](https://github.com/vuelidate/vuelidate) to learn more.
