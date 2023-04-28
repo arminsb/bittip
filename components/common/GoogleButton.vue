@@ -6,6 +6,12 @@
       class="w-6 pl-2"
       src="@/assets/images/icons/google.svg"
       alt="google"
-    />ثبت نام با گوگل
+    />{{ text }}
   </button>
 </template>
+<script setup>
+import { defineProps } from 'vue';
+defineProps({
+  text:String
+})
+</script>

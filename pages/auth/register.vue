@@ -13,7 +13,7 @@
       </div>
       <div class="mb-5">
         <label
-          for="base-input"
+          for="name"
           class="block mb-2 font-yekanBakhBold text-textLightBlack dark:text-textWhite dark:text-textWhite"
           >نام</label
         >
@@ -22,7 +22,7 @@
           v-model="formData.name"
           @change="v$.name.$touch"
           type="text"
-          id="base-input"
+          id="name"
           placeholder="وارد کردن نام"
           class="my-input rounded-lg border outline-none border-grayBorder text-textLightBlack placeholder:text-grayBorder block w-full p-2.5 focus:border-inputFocus"
           :class="{
@@ -40,7 +40,7 @@
       </div>
       <div class="mb-5">
         <label
-          for="base-input"
+          for="family"
           class="block mb-2 font-yekanBakhBold text-textLightBlack dark:text-textWhite"
           >نام خانوادگی</label
         >
@@ -48,7 +48,7 @@
           v-model="formData.family"
           @change="v$.family.$touch"
           type="text"
-          id="base-input"
+          id="family"
           placeholder="وارد کردن نام خانوادگی "
           class="my-input rounded-lg outline-none border border-grayBorder text-textLightBlack placeholder:text-grayBorder block w-full p-2.5 focus:border-inputFocus"
           :class="{
@@ -66,7 +66,7 @@
       </div>
       <div class="mb-5">
         <label
-          for="base-input"
+          for="email"
           class="block mb-2 font-yekanBakhBold text-textLightBlack dark:text-textWhite"
           >ایمیل</label
         >
@@ -74,7 +74,7 @@
           v-model="formData.email"
           @change="v$.email.$touch"
           type="email"
-          id="base-input"
+          id="email"
           placeholder="وارد کردن ایمیل"
           class="my-input rounded-lg outline-none border border-grayBorder text-textLightBlack placeholder:text-grayBorder block w-full p-2.5 focus:boder-inputFocus"
           :class="{
@@ -92,7 +92,7 @@
       </div>
       <div class="mb-5">
         <label
-          for="base-input"
+          for="password"
           class="block mb-2 font-yekanBakhBold text-textLightBlack dark:text-textWhite"
           >رمزعبور</label
         >
@@ -101,7 +101,7 @@
             v-model="formData.password"
             @change="v$.password.$touch"
             :type="!passwordIsShown ? 'password' : ''"
-            id="base-input"
+            id="password"
             class="my-input rounded-lg outline-none border-grayBorder border focus:border-inputFocus text-textLightBlack block w-full p-2.5"
             :class="{
               'border-inputDanger focus:border-inputDanger': v$.password.$error,
@@ -132,7 +132,7 @@
       </div>
       <div class="mb-5">
         <label
-          for="base-input"
+          for="confirmPassword"
           class="block mb-2 font-yekanBakhBold text-textLightBlack dark:text-textWhite"
           >تکرار رمزعبور</label
         >
@@ -142,7 +142,7 @@
             v-model="formData.confirmPassword"
             @change="v$.confirmPassword.$touch"
             :type="!confirmPasswordIsShown ? 'password' : ''"
-            id="base-input"
+            id="confirmPassword"
             class="my-input rounded-lg outline-none border-grayBorder border text-textLightBlack focus:border-inputFocus block w-full p-2.5"
             :class="{
               'border-inputDanger focus:border-inputDanger':
@@ -176,12 +176,12 @@
 
       <CommonOrDivider class="pt-5" />
 
-      <CommonGoogleButton class="mt-5" />
+      <CommonGoogleButton class="mt-5" text="ثبت نام با گوگل" />
 
       <div class="font-yekanBakhBold text-xs mt-8 flex">
-        <p class="text-textMuted">قبلا عضو شده اید؟</p>
+        <p class="text-textMuted pl-1">قبلا عضو شده اید؟</p>
         <NuxtLink
-          to="/login"
+          to="/auth/login"
           class="text-textLightBlack dark:text-textWhite underline"
           >صفحه ورود</NuxtLink
         >
