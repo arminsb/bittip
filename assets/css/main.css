@@ -46,3 +46,11 @@ body {
 .hover-shadow {
     @apply transition-all duration-300 hover:shadow-xl;
 }
+
+.ltr{
+    direction: ltr;
+}
+
+.rtl{
+    direction: rtl;
+}

@@ -5,38 +5,22 @@
     <div class="center-directive flex-col py-10">
       <div class="text-right w-full font-yekanBakhBold mb-6">
         <h1 class="text-[32px] text-textLightBlack dark:text-textWhite">
-          ورود به <span class="text-primaryBlue">کندو</span>
+          بازگردانی رمز عبور
         </h1>
         <p class="text-sm text-textMuted dark:text-grayBorder">
-          به خونه خوش اومدی! اگر عضو کندو هستی کافیه فقط ورود کنی
+          رمز جدیدت رو وارد کن!
         </p>
       </div>
-      <div class="mb-5">
-        <label
-          for="username"
-          class="block mb-2 font-yekanBakhBold text-textLightBlack dark:text-textWhite dark:text-textWhite"
-          >نام کاربری یا ایمیل یا شماره موبایل</label
-        >
 
-        <input
-          v-model="formData.username"
-          @change="v$.username.$touch"
-          type="text"
-          id="username"
-          placeholder="وارد کردن"
-          class="my-input rounded-lg border outline-none border-grayBorder text-textLightBlack placeholder:text-grayBorder block w-full p-2.5 focus:border-inputFocus"
-          :class="{
-            'border-inputDanger focus:border-inputDanger': v$.username.$error,
-            'border-inputSuccess ': !v$.username.$invalid,
-          }"
+      <div class="mb-6 flex items-center gap-x-2 w-full ltr">
+        <img
+          class="w-8 h-8 rounded-full"
+          src="@/assets/images/avatar.svg"
+          alt="avatar"
         />
-        <div
-          class="text-red-500"
-          v-for="error of v$.username.$errors"
-          :key="error.$uid"
-        >
-          <div class="error-msg">{{ error.$message }}</div>
-        </div>
+        <p class="text-base font-bold text-textLightBlack dark:text-textWhite">
+          pardisnazari@gmail.com
+        </p>
       </div>
 
       <div class="mb-5">
@@ -50,7 +34,7 @@
             v-model="formData.password"
             @change="v$.password.$touch"
             :type="!passwordIsShown ? 'password' : ''"
-            id="password"
+            id="password" placeholder="وارد کردن "
             class="my-input rounded-lg outline-none border-grayBorder border focus:border-inputFocus text-textLightBlack block w-full p-2.5"
             :class="{
               'border-inputDanger focus:border-inputDanger': v$.password.$error,
@@ -64,13 +48,6 @@
             alt="eye-slash"
           />
         </div>
-        <span class="absolute w-[400px]">
-          <NuxtLink
-            class="float-left font-yekanBakhBold text-sm text-textLightBlack dark:text-textWhite underline"
-            to="/auth/forgetPassword"
-            >رمز خود را فراموش کرده اید؟</NuxtLink
-          >
-        </span>
         <div
           class="text-red-500 pt-5"
           v-for="error of v$.password.$errors"
@@ -79,35 +56,66 @@
           <div class="error-msg">{{ error.$message }}</div>
         </div>
       </div>
+      <div class="mb-5">
+        <label
+          for="confirmPassword"
+          class="block mb-2 font-yekanBakhBold text-textLightBlack dark:text-textWhite"
+          >تکرار رمزعبور</label
+        >
+
+        <div class="my-input flex items-center">
+          <input
+            v-model="formData.confirmPassword"
+            @change="v$.confirmPassword.$touch"
+            :type="!confirmPasswordIsShown ? 'password' : ''"
+            id="confirmPassword" placeholder="وارد کردن "
+            class="my-input rounded-lg outline-none border-grayBorder border text-textLightBlack focus:border-inputFocus block w-full p-2.5"
+            :class="{
+              'border-inputDanger focus:border-inputDanger':
+                v$.confirmPassword.$error,
+              'border-inputSuccess ': !v$.confirmPassword.$invalid,
+            }"
+          />
+          <img
+            class="absolute mr-[360px] center-direcive"
+            @click="confirmPasswordIsShown = !confirmPasswordIsShown"
+            src="@/assets/images/icons/eye-slash.svg"
+            alt="eye-slash"
+          />
+        </div>
+        <div
+          class="input-errors text-red-500"
+          v-for="error of v$.confirmPassword.$errors"
+          :key="error.$uid"
+        >
+          <div class="error-msg">{{ error.$message }}</div>
+        </div>
+      </div>
 
       <CommonSubmitButton
         class="mt-5"
-        text="ثبت نام"
+        text="تایید کردن"
         textColor="text-textWhite"
         bgColor="bg-primaryBlue"
         font="font-yekanBakh"
       />
 
-      <CommonOrDivider class="pt-5" />
-
-      <CommonGoogleButton class="mt-5" text="ورود با گوگل" />
-
       <div class="font-yekanBakhBold text-xs mt-8 flex">
-        <p class="text-textMuted pl-1">ثبت نام نکرده اید؟</p>
+        <p class="text-textMuted pl-1">بازگشت به</p>
         <NuxtLink
-          to="/auth/register"
+          to="/auth/login"
           class="text-textLightBlack dark:text-textWhite underline"
-          >صفحه ثبت نام</NuxtLink
+          >صفحه ورود</NuxtLink
         >
       </div>
     </div>
   </div>
 </template>
-  
-  <script>
+
+<script>
 import { ref, computed } from "vue";
 import { useVuelidate } from "@vuelidate/core";
-import { required, minLength, helpers } from "@vuelidate/validators";
+import { required, minLength, sameAs, helpers } from "@vuelidate/validators";
 
 definePageMeta({
   layout: "auth",
@@ -115,18 +123,12 @@ definePageMeta({
 export default {
   setup() {
     const formData = reactive({
-      username: "",
       password: "",
+      confirmPassword: null,
     });
 
     const rules = computed(() => {
       return {
-        username: {
-          required: helpers.withMessage(
-            "لورم ایپسوم متن ساختگی با تولید سادگی",
-            required
-          ),
-        },
         password: {
           required: helpers.withMessage(
             "لورم ایپسوم متن ساختگی با تولید سادگی",
@@ -137,13 +139,24 @@ export default {
             minLength(6)
           ),
         },
+        confirmPassword: {
+          required: helpers.withMessage(
+            "لورم ایپسوم متن ساختگی با تولید سادگی",
+            required
+          ),
+          sameAs: helpers.withMessage(
+            "لورم ایپسوم متن ساختگی با تولید سادگی",
+            sameAs(formData.password)
+          ),
+        },
       };
     });
 
     const v$ = useVuelidate(rules, formData);
     const passwordIsShown = ref(false);
+    const confirmPasswordIsShown = ref(false);
 
-    return { formData, v$, passwordIsShown };
+    return { formData, v$, passwordIsShown, confirmPasswordIsShown };
   },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="center-directive w-full min-h-screen md:w-6/12 items-center dark:bg-darkBg"
+    class="center-directive w-full min-h-screen lg:w-6/12 items-center dark:bg-darkBg"
   >
     <div class="center-directive flex-col py-10">
       <div class="text-right w-full font-yekanBakhBold mb-6">
@@ -51,7 +51,7 @@
       <div class="font-yekanBakhBold text-xs mt-8 flex">
         <p class="text-textMuted pl-1">بازگشت به</p>
         <NuxtLink
-          to="/auth/register"
+          to="/auth/login"
           class="text-textLightBlack dark:text-textWhite underline"
           >صفحه ورود</NuxtLink
         >

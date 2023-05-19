@@ -1,6 +1,6 @@
 <template>
   <div
-    class="center-directive w-full min-h-screen md:w-6/12 items-center dark:bg-darkBg"
+    class="center-directive w-full min-h-screen lg:w-6/12 items-center dark:bg-darkBg"
   >
     <div class="center-directive flex-col py-10">
       <div class="text-right w-full font-yekanBakhBold mb-6">
@@ -11,6 +11,7 @@
           به کندو خوش اومدی! اگر عضو کندو نشدی اول ثبت نام کن
         </p>
       </div>
+
       <div class="mb-5">
         <label
           for="name"
@@ -38,6 +39,7 @@
           <div class="error-msg">{{ error.$message }}</div>
         </div>
       </div>
+
       <div class="mb-5">
         <label
           for="family"
@@ -64,6 +66,7 @@
           <div class="error-msg">{{ error.$message }}</div>
         </div>
       </div>
+
       <div class="mb-5">
         <label
           for="email"
@@ -90,6 +93,7 @@
           <div class="error-msg">{{ error.$message }}</div>
         </div>
       </div>
+
       <div class="mb-5">
         <label
           for="password"
@@ -118,7 +122,7 @@
         <span class="absolute w-[400px]">
           <NuxtLink
             class="float-left font-yekanBakhBold text-sm text-textLightBlack dark:text-textWhite underline"
-            to="/forget-password"
+            to="/auth/forgetPassword"
             >رمز خود را فراموش کرده اید؟</NuxtLink
           >
         </span>
@@ -130,6 +134,7 @@
           <div class="error-msg">{{ error.$message }}</div>
         </div>
       </div>
+
       <div class="mb-5">
         <label
           for="confirmPassword"
@@ -160,6 +165,65 @@
         <div
           class="input-errors text-red-500"
           v-for="error of v$.confirmPassword.$errors"
+          :key="error.$uid"
+        >
+          <div class="error-msg">{{ error.$message }}</div>
+        </div>
+      </div>
+
+      <div class="mb-5">
+        <label
+          for="gender"
+          class="block mb-2 font-yekanBakhBold text-textLightBlack dark:text-textWhite dark:text-textWhite"
+          >جنسیت</label
+        >
+        <select
+          v-model="formData.gender"
+          @change="v$.gender.$touch"
+          id="gender"
+          class="my-input rounded-lg border outline-none border-grayBorder text-textLightBlack placeholder:text-grayBorder block w-full p-2.5 focus:border-inputFocus"
+          :class="{
+            'border-inputDanger focus:border-inputDanger': v$.gender.$error,
+            'border-inputSuccess ': !v$.gender.$invalid,
+          }"
+        >
+          <option selected disabled value="">وارد کردن جنسیت</option>
+          <option value="male">مرد</option>
+          <option value="female">زن</option>
+        </select>
+        <div
+          class="text-red-500"
+          v-for="error of v$.gender.$errors"
+          :key="error.$uid"
+        >
+          <div class="error-msg">{{ error.$message }}</div>
+        </div>
+      </div>
+
+       <div class="mb-5">
+        <label
+          for="category"
+          class="block mb-2 font-yekanBakhBold text-textLightBlack dark:text-textWhite dark:text-textWhite"
+          >دسته بندی حرفه</label
+        >
+        <select
+          v-model="formData.category"
+          @change="v$.category.$touch"
+          id="category"
+          class="my-input rounded-lg border outline-none border-grayBorder text-textLightBlack placeholder:text-grayBorder block w-full p-2.5 focus:border-inputFocus"
+          :class="{
+            'border-inputDanger focus:border-inputDanger': v$.category.$error,
+            'border-inputSuccess ': !v$.category.$invalid,
+          }"
+        >
+          <option selected disabled value="">دسته بندی حرفه</option>
+          <option value="male">فرانت اند</option>
+          <option value="female">بک اند</option>
+          <option value="female">ui/ux</option>
+        </select>
+        <div
+          class="text-red-500"
+          v-for="error of v$.category.$errors"
           :key="error.$uid"
         >
           <div class="error-msg">{{ error.$message }}</div>
@@ -212,6 +276,8 @@ export default {
       email: "",
       password: "",
       confirmPassword: null,
+      gender: "",
+      category: "",
     });
 
     const rules = computed(() => {
@@ -256,6 +322,18 @@ export default {
           sameAs: helpers.withMessage(
             "لورم ایپسوم متن ساختگی با تولید سادگی",
             sameAs(formData.password)
+          ),
+        },
+        gender: {
+          required: helpers.withMessage(
+            "لورم ایپسوم متن ساختگی با تولید سادگی",
+            required
+          ),
+        },
+        category: {
+          required: helpers.withMessage(
+            "لورم ایپسوم متن ساختگی با تولید سادگی",
+            required
           ),
         },
       };
