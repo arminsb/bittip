@@ -45,3 +45,6 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 ## Validation Library
 Look at the [Vuelidate](https://github.com/vuelidate/vuelidate) to learn more.
+
+## Bit-tip Figma
+https://www.figma.com/file/vnTdvpF6qXik7vM3oYUBQO/bit-tip?type=design&t=hmTkpkex11HgycDh-1
