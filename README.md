@@ -1,8 +1,4 @@
-# Bit-Tip
-
-# Nuxt 3 Minimal Starter
-
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# ![Frame 13](https://github.com/arminsb/bittip/assets/76691001/907d0341-27b0-4406-b06b-3fc85e7082a4) Bit-Tip 
 
 ## Setup
 
@@ -45,3 +41,6 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 ## Validation Library
 Look at the [Vuelidate](https://github.com/vuelidate/vuelidate) to learn more.
+
+## Bit-tip Figma
+https://www.figma.com/file/vnTdvpF6qXik7vM3oYUBQO/bit-tip?type=design&t=hmTkpkex11HgycDh-1
