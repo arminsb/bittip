@@ -1,8 +1,9 @@
 <template>
-    <h1>im index page</h1>
+    <h1 class="">im index page</h1>
+    <Header/>
 </template>
 <script>
-export default {
-    layout:"default",
-}
+definePageMeta({
+  layout: "dashboard",
+});
 </script>
