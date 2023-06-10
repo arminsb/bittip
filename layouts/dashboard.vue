@@ -1,7 +1,12 @@
 <template>
-<NavBar/>
+<sideBar />
+<div class="float-left">
+  <NavBar class="float-left nav-w"/>
   <slot/>
-</template>     
-
-<script>
-</script>
+</div>
+</template>
+<style scoped>
+.nav-w{
+  width: calc(100vw - 316px);
+}
+</style>

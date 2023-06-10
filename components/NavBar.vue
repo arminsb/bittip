@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen h-[100px] bg-textWhite dark:bg-darkbgLight flex items-center justify-between px-8">
+  <nav class="h-[100px] bg-textWhite dark:bg-darkbgLight flex items-center justify-between px-8">
     <!-- region -->
     <div class="flex items-center gap-x-3 text-textDark dark:text-textWhite font-bold">
       <p>PER(IRN)</p>
@@ -44,5 +44,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </nav>
 </template>
