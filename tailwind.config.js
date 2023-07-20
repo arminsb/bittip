@@ -19,6 +19,7 @@ module.exports = {
         textMuted:"#757575",
         textDark:"#1c1c1c",
         textLightBlack:"#424242",
+        darkHover:"#2B3467",
         grayBorder:"#9e9e9e",
         primaryBlue: "#5438DC",
         inputFocus:"#357DED",

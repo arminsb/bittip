@@ -34,9 +34,12 @@ body {
     font-family: 'yekan-bakh';
 }
 
-
 .center-directive {
     @apply flex justify-center items-center;
+}
+
+.transition-directive {
+    @apply transition-all duration-300;
 }
 
 .my-input {
